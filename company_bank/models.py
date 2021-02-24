@@ -3,7 +3,7 @@ from company.models import *
 
 
 # Create your models here.
-class Company_bank(models.Model):
+class CompanyBank(models.Model):
     bank_account_number = models.CharField(max_length=255)
     ifsc = models.CharField(max_length=255)
     company_id = models.ForeignKey(Company, on_delete=models.CASCADE)
