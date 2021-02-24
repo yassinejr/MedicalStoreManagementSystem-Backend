@@ -31,12 +31,17 @@ from company import views
 # from medical_detail.views import *
 
 
-router = DefaultRouter()
-router.register("company", views.CompanyViewSet)
+# router = DefaultRouter()
+# router.register(r'company', views.CompanyViewset, basename='company')
+from rest_framework_simplejwt.views import TokenObtainPairView, TokenRefreshView
 
 urlpatterns = [
     path('admin/', admin.site.urls),
-    path('api/', include(router.urls)),
+    path('api/', include('company.urls')),
+    path('api-auth/', include('rest_framework.urls', namespace='rest_framework')),
+    path('api/gettoken/', TokenObtainPairView.as_view(), name='gettoken'),
+    path('api/refresh_token/', TokenRefreshView.as_view(), name='refresh_token'),
+    # path('api/', include(router.urls)),
     # path('api/company_bank/', include(company_bank.urls)),
     # path('company_account/', include(company_account.urls)),
     # path('customer/', include(customer.urls)),
