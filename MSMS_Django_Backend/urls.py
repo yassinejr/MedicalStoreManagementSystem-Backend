@@ -14,8 +14,43 @@ Including another URLconf
     2. Add a URL to urlpatterns:  path('blog/', include('blog.urls'))
 """
 from django.contrib import admin
-from django.urls import path
+from django.urls import path, include
+from rest_framework.routers import DefaultRouter
+
+from company import views
+# from company_bank.views import *
+# from company_account.views import *
+# from customer.views import *
+# from customer_request.views import *
+# from employee.views import *
+# from employee_bank.views import *
+# from employee_salary.views import *
+# from invoice.views import *
+# from invoice_detail.views import *
+# from medicine.views import *
+# from medical_detail.views import *
+
+
+# router = DefaultRouter()
+# router.register(r'company', views.CompanyViewset, basename='company')
+from rest_framework_simplejwt.views import TokenObtainPairView, TokenRefreshView
 
 urlpatterns = [
     path('admin/', admin.site.urls),
+    path('api/', include('company.urls')),
+    path('api-auth/', include('rest_framework.urls', namespace='rest_framework')),
+    path('api/gettoken/', TokenObtainPairView.as_view(), name='gettoken'),
+    path('api/refresh_token/', TokenRefreshView.as_view(), name='refresh_token'),
+    # path('api/', include(router.urls)),
+    # path('api/company_bank/', include(company_bank.urls)),
+    # path('company_account/', include(company_account.urls)),
+    # path('customer/', include(customer.urls)),
+    # path('customer_request/', include(customer_request.urls)),
+    # path('employee/', include(employee.urls)),
+    # path('employee_bank/', include(employee_bank.urls)),
+    # path('employee_salary/', include(employee_salary.urls)),
+    # path('invoice/', include(invoice.urls)),
+    # path('invoice_detail/', include(invoice_detail.urls)),
+    # path('medicine/', include(medicine.urls)),
+    # path('medical_detail/', include(medical_detail.urls)),
 ]
