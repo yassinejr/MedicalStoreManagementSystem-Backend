@@ -16,41 +16,43 @@ Including another URLconf
 from django.contrib import admin
 from django.urls import path, include
 from rest_framework.routers import DefaultRouter
+from rest_framework_simplejwt.views import TokenObtainPairView, TokenRefreshView
+
 
 from company import views
-# from company_bank.views import *
-# from company_account.views import *
-# from customer.views import *
-# from customer_request.views import *
-# from employee.views import *
-# from employee_bank.views import *
-# from employee_salary.views import *
-# from invoice.views import *
-# from invoice_detail.views import *
-# from medicine.views import *
-# from medical_detail.views import *
+from company_bank import views
+from company_account import views
+# from customer import views
+# from customer_request import views
+# from employee import views
+# from employee_bank import views
+# from employee_salary import views
+# from invoice import views
+# from invoice_detail import views
+# from medicine import views
+# from medical_detail import views
 
 
 # router = DefaultRouter()
 # router.register(r'company', views.CompanyViewset, basename='company')
-from rest_framework_simplejwt.views import TokenObtainPairView, TokenRefreshView
+
 
 urlpatterns = [
     path('admin/', admin.site.urls),
-    path('api/', include('company.urls')),
     path('api-auth/', include('rest_framework.urls', namespace='rest_framework')),
     path('api/gettoken/', TokenObtainPairView.as_view(), name='gettoken'),
     path('api/refresh_token/', TokenRefreshView.as_view(), name='refresh_token'),
+    path('api/companies/', include('company.urls'), name='companies'),
+    path('api/company_bank/', include('company_bank.urls'), name='company_bank'),
+    path('api/company_account/', include('company_account.urls'), name='company_account'),
+    # path('api/customer/', include(customer.urls)),
+    # path('api/customer_request/', include(customer_request.urls)),
+    # path('api/employee/', include(employee.urls)),
+    # path('api/employee_bank/', include(employee_bank.urls)),
+    # path('api/employee_salary/', include(employee_salary.urls)),
+    # path('api/invoice/', include(invoice.urls)),
+    # path('api/invoice_detail/', include(invoice_detail.urls)),
+    # path('api/medicine/', include(medicine.urls)),
+    # path('api/medical_detail/', include(medical_detail.urls)),
     # path('api/', include(router.urls)),
-    # path('api/company_bank/', include(company_bank.urls)),
-    # path('company_account/', include(company_account.urls)),
-    # path('customer/', include(customer.urls)),
-    # path('customer_request/', include(customer_request.urls)),
-    # path('employee/', include(employee.urls)),
-    # path('employee_bank/', include(employee_bank.urls)),
-    # path('employee_salary/', include(employee_salary.urls)),
-    # path('invoice/', include(invoice.urls)),
-    # path('invoice_detail/', include(invoice_detail.urls)),
-    # path('medicine/', include(medicine.urls)),
-    # path('medical_detail/', include(medical_detail.urls)),
 ]
