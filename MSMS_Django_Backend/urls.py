@@ -21,16 +21,16 @@ from rest_framework_simplejwt.views import TokenObtainPairView, TokenRefreshView
 
 from company import views
 from company_bank import views
-# from company_account.views import *
-# from customer.views import *
-# from customer_request.views import *
-# from employee.views import *
-# from employee_bank.views import *
-# from employee_salary.views import *
-# from invoice.views import *
-# from invoice_detail.views import *
-# from medicine.views import *
-# from medical_detail.views import *
+from company_account import views
+# from customer import views
+# from customer_request import views
+# from employee import views
+# from employee_bank import views
+# from employee_salary import views
+# from invoice import views
+# from invoice_detail import views
+# from medicine import views
+# from medical_detail import views
 
 
 # router = DefaultRouter()
@@ -42,10 +42,9 @@ urlpatterns = [
     path('api-auth/', include('rest_framework.urls', namespace='rest_framework')),
     path('api/gettoken/', TokenObtainPairView.as_view(), name='gettoken'),
     path('api/refresh_token/', TokenRefreshView.as_view(), name='refresh_token'),
-    path('api/companies/', include('company.urls')),
-    path('api/company_bank/', include('company_bank.urls')),
-    # path('api/', include(router.urls)),
-    # path('company_account/', include(company_account.urls)),
+    path('api/companies/', include('company.urls'), name='companies'),
+    path('api/company_bank/', include('company_bank.urls'), name='company_bank'),
+    path('api/company_account/', include('company_account.urls'), name='company_account'),
     # path('api/customer/', include(customer.urls)),
     # path('api/customer_request/', include(customer_request.urls)),
     # path('api/employee/', include(employee.urls)),
@@ -55,4 +54,5 @@ urlpatterns = [
     # path('api/invoice_detail/', include(invoice_detail.urls)),
     # path('api/medicine/', include(medicine.urls)),
     # path('api/medical_detail/', include(medical_detail.urls)),
+    # path('api/', include(router.urls)),
 ]

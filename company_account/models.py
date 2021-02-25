@@ -15,4 +15,4 @@ class CompanyAccount(models.Model):
 
     class Meta:
         verbose_name = "Company Account"
-        verbose_name_plural = "Companies Accounts"
+        verbose_name_plural = "Company Accounts"

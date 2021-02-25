@@ -32,7 +32,7 @@ class CompanyBankList(APIView):
 
 class CompanyBankDetail(APIView):
     """
-    Retrieve, update or delete a company instance.
+    Retrieve, update or delete a company bank instance.
     """
 
     def get_object(self, pk):
