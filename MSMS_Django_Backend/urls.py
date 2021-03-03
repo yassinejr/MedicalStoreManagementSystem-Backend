@@ -25,7 +25,7 @@ from drf_yasg import openapi
 from company import views
 from company_bank import views
 from company_account import views
-# from customer import views
+from customer import views
 # from customer_request import views
 # from employee import views
 # from employee_bank import views
@@ -57,7 +57,7 @@ urlpatterns = [
     path('api/companies/', include('company.urls'), name='companies'),
     path('api/company_bank/', include('company_bank.urls'), name='company-bank'),
     path('api/company_account/', include('company_account.urls'), name='company-account'),
-    # path('api/customer/', include(customer.urls)),
+    path('api/customer/', include('customer.urls'), name='customer'),
     # path('api/customer_request/', include(customer_request.urls)),
     # path('api/employee/', include(employee.urls)),
     # path('api/employee_bank/', include(employee_bank.urls)),
