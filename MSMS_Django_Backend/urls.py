@@ -39,12 +39,12 @@ from company_account import views
 
 urlpatterns = [
     path('admin/', admin.site.urls),
-    path('api-auth/', include('rest_framework.urls', namespace='rest_framework')),
-    path('api/gettoken/', TokenObtainPairView.as_view(), name='gettoken'),
-    path('api/refresh_token/', TokenRefreshView.as_view(), name='refresh_token'),
+    path('api-auth/', include('rest_framework.urls', namespace='rest_framework'), name='api-auth'),
+    path('api/gettoken/', TokenObtainPairView.as_view(), name='get-token'),
+    path('api/refresh_token/', TokenRefreshView.as_view(), name='refresh-token'),
     path('api/companies/', include('company.urls'), name='companies'),
-    path('api/company_bank/', include('company_bank.urls'), name='company_bank'),
-    path('api/company_account/', include('company_account.urls'), name='company_account'),
+    path('api/company_bank/', include('company_bank.urls'), name='company-bank'),
+    path('api/company_account/', include('company_account.urls'), name='company-account'),
     # path('api/customer/', include(customer.urls)),
     # path('api/customer_request/', include(customer_request.urls)),
     # path('api/employee/', include(employee.urls)),

@@ -1,7 +1,7 @@
 from django.db import models
+from django.urls import reverse
 
 
-# Create your models here.
 class Company(models.Model):
     name = models.CharField(max_length=255)
     license_number = models.IntegerField()
@@ -14,6 +14,9 @@ class Company(models.Model):
     class Meta:
         verbose_name = "Company"
         verbose_name_plural = "Companies"
+
+    def get_absolute_url(self):
+        return reverse('company-detail', args=[str(self.id)])
 
     def __str__(self):
         return self.name

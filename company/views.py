@@ -66,6 +66,7 @@ class CompanyList(APIView):
     """
     authentication_classes = [JWTAuthentication]
     permission_classes = [IsAuthenticated]
+
     def get(self, request, format=None):
         companies = Company.objects.all()
         serializer = CompanySerializer(companies, many=True)
