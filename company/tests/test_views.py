@@ -35,6 +35,4 @@ class CompanyTests(TestSetUp):
         }
         response = self.client.put(url, data, format='json')
         self.assertEqual(response.status_code, status.HTTP_200_OK)
-        print(json.loads(response.content))
-        # self.assertEqual(json.loads(response.content[0]), {'name': 'Pharmacie Zarzis'})
         self.assertEqual(json.loads(response.content)['name'], 'Pharmacie Zarzis')
