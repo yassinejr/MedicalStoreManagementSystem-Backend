@@ -25,15 +25,15 @@ from drf_yasg import openapi
 from company import views
 from company_bank import views
 from company_account import views
-# from customer import views
-# from customer_request import views
-# from employee import views
-# from employee_bank import views
-# from employee_salary import views
-# from invoice import views
-# from invoice_detail import views
-# from medicine import views
-# from medical_detail import views
+from customer import views
+from customer_request import views
+from employee import views
+from employee_bank import views
+from employee_salary import views
+from invoice import views
+from invoice_detail import views
+from medicine import views
+from medical_detail import views
 
 schema_view = get_schema_view(
    openapi.Info(
@@ -57,15 +57,15 @@ urlpatterns = [
     path('api/companies/', include('company.urls'), name='companies'),
     path('api/company_bank/', include('company_bank.urls'), name='company-bank'),
     path('api/company_account/', include('company_account.urls'), name='company-account'),
-    # path('api/customer/', include(customer.urls)),
-    # path('api/customer_request/', include(customer_request.urls)),
-    # path('api/employee/', include(employee.urls)),
-    # path('api/employee_bank/', include(employee_bank.urls)),
-    # path('api/employee_salary/', include(employee_salary.urls)),
-    # path('api/invoice/', include(invoice.urls)),
-    # path('api/invoice_detail/', include(invoice_detail.urls)),
-    # path('api/medicine/', include(medicine.urls)),
-    # path('api/medical_detail/', include(medical_detail.urls)),
+    path('api/customer/', include('customer.urls'), name='customer'),
+    path('api/customer_request/', include('customer_request.urls'), name='company-request'),
+    # path('api/employee/', include('employee.urls')),
+    # path('api/employee_bank/', include('employee_bank.urls')),
+    # path('api/employee_salary/', include('employee_salary.urls')),
+    # path('api/invoice/', include('invoice.urls')),
+    # path('api/invoice_detail/', include('invoice_detail.urls')),
+    # path('api/medicine/', include('medicine.urls')),
+    # path('api/medical_detail/', include('medical_detail.urls')),
    path('swagger/', schema_view.with_ui('swagger', cache_timeout=0), name='schema-swagger-ui'),
    path('redoc/', schema_view.with_ui('redoc', cache_timeout=0), name='schema-redoc'),
 ]
