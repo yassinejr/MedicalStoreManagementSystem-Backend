@@ -50,9 +50,20 @@ INSTALLED_APPS = [
     'invoice_detail',
     'medicine',
     'medical_detail',
+    'drf_yasg',
     'rest_framework',
 ]
 
+
+SWAGGER_SETTINGS = {
+    'SECURITY_DEFINITIONS': {
+        "Auth Token eg [Bearer] (JWT)": {
+            "type": "apiKey",
+            "name": "Authorization",
+            "in": "header"
+        }
+    }
+}
 REST_FRAMEWORK = {
     'DEFAULT_AUTHENTICATION':[
       'rest_framework_jwt.authentication.JSONWebTokenAuthentication',
